@@ -7,3 +7,6 @@ class Project(models.Model):
     image = models.ImageField(upload_to="portfolio/images/")  # image of the project
     url = models.URLField(blank=True)  # url of the project
 
+    def __str__(self):
+        return self.title
+
