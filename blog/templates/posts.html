@@ -2,9 +2,10 @@
 
 {% for post in posts %}
     <h2>{{ post.title }}</h2>
-    <h3>{{ post.date }}</h3>
-
-    <p>{{ post.description }}</p>
+    <p>{{ post.description|striptags|truncatechars:100 }}</p> <!-- abrevia en 100 carácteres -->
+    <p>{{post.date|date:'M d Y'|upper}}</p> <!-- formatea la fecha -->
     <img src="{{ post.image.url }}" alt="{{ post.title }}">
+
+    <a href="{% url 'blog:post_detail' post.id %}">{{ post.title }}</a>
 
 {% endfor %}
