@@ -2,8 +2,11 @@
 
 {% block content %}
 
-{% load static %}
+<!-- 
+    {% load static %}
+ -->
 
+<!-- Hero Section -->
 <header class="row bg-black">
     <div class="col-md-4">
         <img src="{% static 'portfolio/icon.jpg' %}" alt="">
@@ -18,20 +21,35 @@
             perferendis iste quos corporis fuga corrupti tenetur! Doloremque, eius? Voluptatem modi necessitatibus rerum
             suscipit ipsam omnis architecto. Ratione explicabo accusamus vel vitae provident recusandae ducimus soluta
             similique fugit minus eaque repellendus doloremque, enim fuga. In sit ad vitae labore itaque!</p>
-        <a href="{% static 'portfolio/Luis_Santamaria_Resume.pdf' %}" class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+        <a href="{% static 'portfolio/Luis_Santamaria_Resume.pdf' %}"
+            class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
     </div>
 </header>
 
+<!-- Portfolio Section -->
+<div class="row my-4 text-center">
 
-{% for project in projects %}
-<div class="project">
-    <h2>{{ project.title }}</h2>
-    <p>{{ project.description }}</p>
-    <img src="{{ project.image.url }}" alt="{{ project.title }}">
-    {% if project.url %}
-    <a href="{{ project.url }}">View Project</a>
-    {% endif %}
+    <h3>My Projects</h3>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci, repudiandae!</p>
+
+    {% for project in projects %}
+    <div class="col-md-4 p-4">  
+        <div class="card bg-black card-project">
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top">
+
+            <div class="card-body ">
+
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+
+                {% if project.url %}
+                <a href="{{ project.url }}" class="btn btn-light rounded-0 btn-sm" target="_blank" rel="noreferrer">View Project</a>
+                {% endif %}
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
 {% endblock content %}
